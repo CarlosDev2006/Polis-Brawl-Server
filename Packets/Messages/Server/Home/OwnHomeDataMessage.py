@@ -77,7 +77,7 @@ class OwnHomeDataMessage(Writer):
         self.writeVint(99999)
         self.writeVint(0)
 
-        self.writeScId(16, 0)
+        self.writeScId(16, self.player.brawler_id)
 
         self.writeString("RU")
         self.writeString()
@@ -255,7 +255,7 @@ class OwnHomeDataMessage(Writer):
         # "new" Brawler Tag array
         self.writeVint(0)
 
-        self.writeVint(99999)
+        self.writeVint(self.player.gems) # gems
         self.writeVint(0)
         self.writeVint(0)
         self.writeVint(0)
@@ -266,5 +266,5 @@ class OwnHomeDataMessage(Writer):
         self.writeVint(0)
         self.writeVint(0)
         self.writeVint(0)
-        self.writeVint(2) # tutorial state (0 - tutorial, 1 - play one game, 2 - menu)
+        self.writeVint(2)
         self.writeVint(1585502369)
