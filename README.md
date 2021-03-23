@@ -3,7 +3,7 @@
 Polis Brawl is open source Brawl Stars server emulator for version 18 of the game!
 
 
-![ScreenShot](https://cdn.discordapp.com/attachments/811919827870023713/823159862770663444/Screenshot_20210321_144256.jpg) 
+![ScreenShot](https://cdn.discordapp.com/attachments/823850867035209728/823997207605674004/Screenshot_20210323_215454_com.polisbrawl.v18.jpg) 
 ![ScreenShot](https://cdn.discordapp.com/attachments/811919827870023713/823159862992830524/Screenshot_20210321_144249.jpg) 
 
 
