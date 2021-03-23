@@ -1,5 +1,6 @@
 from random import *
 from Database.DatabaseManager import DataBase
+from Packets.Messages.Server.OutOfSyncMessage import OutOfSyncMessage
 from Logic.Boxes import Boxes
 
 from Utils.Writer import Writer
@@ -26,12 +27,10 @@ class LogicBoxDataCommand(Writer):
 
         self.box_index = 0
         def get_id(id):
-            if id == 5:  # Brawl Box
-                DataBase.replaceValue(self, 'brawlBoxes', self.player.brawl_boxes - 100)
+            if id == 5:  # Brawl Box         
                 return 10
             elif id == 4:  # Big Box
                 self.box_index = 1
-                DataBase.replaceValue(self, 'bigBoxes', self.player.big_boxes - 10)
                 return 12
             elif id == 3:  # Shop Mega Box
                 self.box_index = 3
@@ -41,6 +40,10 @@ class LogicBoxDataCommand(Writer):
                 self.box_index = 2
                 DataBase.replaceValue(self, 'gems', self.player.gems - 30)
                 return 12
+            elif id == 6:  # Trophy Road Brawl Box
+                self.box_index = 6
+                DataBase.replaceValue(self, 'leagueReward', self.player.trophyroad + 1)
+                return 10
 
         self.box_skin_id = get_id(self.player.box_id)
         box_content = {"RewardType": "", "RewardCount": 1, "Gold": randint(self.BoxData[self.box_index]["Coins"][0], self.BoxData[self.box_index]["Coins"][1])}
@@ -118,7 +121,8 @@ class LogicBoxDataCommand(Writer):
             # Gold start
             self.writeVint(box_content["Gold"]) # Reward amount
             self.writeScId(0, 7)                # RewardID
-            self.writeHexa('''00 00 00''')  # Reward end
+            self.writeVint(0)
+            self.writeVint(0)
             # Gold end
 
             powerpoints_ammount = [randint(self.BoxData[self.box_index]["UpgradePoints"][0], self.BoxData[self.box_index]["UpgradePoints"][1]) for _ in range(len(brawlers_rewarded))]
@@ -130,7 +134,8 @@ class LogicBoxDataCommand(Writer):
                 self.writeVint(powerpoints_ammount[i]) # Reward amount
                 self.writeScId(16, box_content["Powerpoints" + str(i + 1)]) # BrawlerID
                 self.writeVint(6) # RewardID
-                self.writeHexa('''00 00 00''')  # Reward end
+                self.writeVint(0)
+                self.writeVint(0)
                 # Upgrade points end
 
             if box_content["RewardType"] == "Brawler":
