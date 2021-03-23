@@ -19,9 +19,9 @@ class OwnHomeDataMessage(Writer):
         self.writeVint(0)
         self.writeVint(0)
 
-        self.writeVint(95)
+        self.writeVint(95) # trophy road reward claimed
 
-        self.writeVint(999999)
+        self.writeVint(self.player.player_experience)
 
         self.writeScId(28, self.player.profile_icon)  # Player Icon ID
         self.writeScId(43, self.player.name_color)  # Player Name Color ID
@@ -31,9 +31,10 @@ class OwnHomeDataMessage(Writer):
             pass
 
         # Selected Skins array
-        self.writeVint(0)
-        for x in range(0):
-            pass
+        self.writeVint(len(self.player.brawlers_skins))
+        for brawler_id in self.player.brawlers_skins:
+            self.writeVint(29)
+            self.writeVint(self.player.brawlers_skins[brawler_id])  # skinID
 
         # Unlocked Skins array
         self.writeVint(len(self.player.skins_id))
@@ -49,7 +50,7 @@ class OwnHomeDataMessage(Writer):
         self.writeBoolean(False)
 
         self.writeVint(self.player.tokensdoubler) # token doubler
-        self.writeVint(99999) # season end timer
+        self.writeVint(0) # season end timer
 
         self.writeVint(1)
 
