@@ -54,9 +54,4 @@ class TeamGameroomDataMessage(Writer):
             self.writeVint(0)
             self.writeVint(0)
             self.writeVint(0)
-            if self.useGadget == 20:
-                self.writeVint(6)
-            else:
-                self.writeVint(2)
-        else:
             print(self.player.room_id)
