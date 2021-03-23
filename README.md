@@ -48,8 +48,7 @@ Polis Brawl is open source Brawl Stars server emulator for version 18 of the gam
 
 
 ## Configure client
-To connect to your server, you need a custom client. Here the only solution is to use a [pre-made client](https://drive.google.com/file/d/1nPUFtKTltEtackIk6qdxKOfsOziW_U0S/view?usp=sharing). Just replace the IP in the frida-gadget config with yours (```/lib/armeabi-v7a/libgg.config.so```) ```{"interaction":{"interaction":{"type":"script","path":"libscript.so","on_change":"reload","parameters":{"redirectHost":"YOUR_IP","relocate":true}}}```
-If you have Android 10, use VMOS Pro
+To connect to your server, you need a custom client. Here the only solution is to use a [pre-made client](https://drive.google.com/file/d/14DzpsEEkkD-_zwKXbK3sbe1n6WL0yFQM/view?usp=sharing). Just replace the IP in the frida-gadget config with yours (```/lib/armeabi-v7a/libpolis.config.so```) ```{"interaction":{"interaction":{"type":"script","path":"libscript.so","on_change":"reload","parameters":{"redirectHost":"YOUR_IP","relocate":true}}}```
 
 
 
