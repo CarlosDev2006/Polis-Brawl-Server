@@ -23,8 +23,8 @@ class OwnHomeDataMessage(Writer):
 
         self.writeVint(999999)
 
-        self.writeScId(28, 0)
-        self.writeScId(43, 0)
+        self.writeScId(28, self.player.profile_icon)  # Player Icon ID
+        self.writeScId(43, self.player.name_color)  # Player Name Color ID
 
         self.writeVint(0)  # array
         for x in range(0):
@@ -36,9 +36,9 @@ class OwnHomeDataMessage(Writer):
             pass
 
         # Unlocked Skins array
-        self.writeVint(0)
-        for x in range(0):
-            pass
+        self.writeVint(len(self.player.skins_id))
+        for skin_id in self.player.skins_id:
+        	self.writeScId(29, skin_id)
 
         self.writeVint(0)
         self.writeVint(0)
@@ -48,8 +48,8 @@ class OwnHomeDataMessage(Writer):
         self.writeVint(0)
         self.writeBoolean(False)
 
-        self.writeVint(100)
-        self.writeVint(99999)
+        self.writeVint(self.player.tokensdoubler) # token doubler
+        self.writeVint(99999) # season end timer
 
         self.writeVint(1)
 
@@ -77,7 +77,7 @@ class OwnHomeDataMessage(Writer):
         self.writeVint(99999)
         self.writeVint(0)
 
-        self.writeScId(16, self.player.brawler_id)
+        self.writeScId(16, 0)
 
         self.writeString("RU")
         self.writeString()
