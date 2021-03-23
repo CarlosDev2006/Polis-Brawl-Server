@@ -2,6 +2,7 @@ from Utils.Writer import Writer
 from Database.DatabaseManager import DataBase
 from Utils.Helpers import Helpers
 from Logic.Shop import Shop
+from Logic.Player import Players
 
 
 class OwnHomeDataMessage(Writer):
@@ -10,13 +11,14 @@ class OwnHomeDataMessage(Writer):
         super().__init__(client)
         self.id = 24101
         self.player = player
+        
 
     def encode(self):
         self.writeVint(0)
         self.writeVint(0)
 
-        self.writeVint(0)
-        self.writeVint(0)
+        self.writeVint(self.player.trophies)  # Player Trophies
+        self.writeVint(self.player.highest_trophies)  # Player Max Reached Trophies
         self.writeVint(0)
 
         self.writeVint(95) # trophy road reward claimed
@@ -75,7 +77,7 @@ class OwnHomeDataMessage(Writer):
         self.writeVint(1)     # array
         self.writeVint(1)
 
-        self.writeVint(99999)
+        self.writeVint(self.player.tickets)
         self.writeVint(0)
 
         self.writeScId(16, 0)
@@ -167,12 +169,13 @@ class OwnHomeDataMessage(Writer):
         self.writeVint(6)
         self.writeVint(50)
         self.writeVint(604800)
-        self.writeBoolean(True)
-        self.writeVint(0)
+        self.writeBoolean(True)  # Box boolean
 
-        self.writeVint(0) # array
-        for x in range(0):
-            pass
+        self.writeVint(0)  # array
+
+        self.writeVint(1)  # Menu Theme
+        self.writeInt(1)
+        self.writeInt(self.player.theme_id)  # Theme ID
 
         self.writeInt(0)
         self.writeInt(1)
