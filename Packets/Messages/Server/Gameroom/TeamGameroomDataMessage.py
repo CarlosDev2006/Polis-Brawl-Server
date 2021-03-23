@@ -59,4 +59,4 @@ class TeamGameroomDataMessage(Writer):
             else:
                 self.writeVint(2)
         else:
-            self.writeVint(self.player.room_id)
+            print(self.player.room_id)
