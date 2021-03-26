@@ -1,4 +1,4 @@
-<h1 align="center">Polis-Brawl v18 server</h1>
+<h1 align="center">Polis Brawl</h1>
 
 Polis Brawl is open source Brawl Stars server emulator for version 18 of the game!
 
@@ -8,7 +8,7 @@ Polis Brawl is open source Brawl Stars server emulator for version 18 of the gam
 
 
 ## You can
-- Create gameroom
+- Create gameroom (bugged for now) 
 - Get trophies from friendly games
 - Open boxes
 - Select skins (all skins unlocked)
@@ -16,7 +16,7 @@ Polis Brawl is open source Brawl Stars server emulator for version 18 of the gam
 
 ## Our Plans:
 - Fix events bug
-- Add Bibi
+- Fix gameroom
 
 
 ## Prerequisites
